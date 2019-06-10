@@ -28,14 +28,18 @@ def all(path):
         'headers':  request.headers,
         'from':     request.remote_addr,
     }
+
     info_str = "AT {i[dt]}\n"
     info_str += "{i[req]} request to {i[url]}\n"
     info_str += "FROM: {i[from]}\n\n"
-    info_str += "=== ARGS ===\n{}=== ARGS END\n\n".format(dict_pprint(request.args))
-    info_str += "=== DATA ===\n{}=== DATA END\n\n".format(dict_pprint(request.form))
+    info_str += "=== ARGS ===\n{}=== ARGS END ===\n\n".format(dict_pprint(request.args))
+    info_str += "=== DATA ===\n{}=== DATA END ===\n\n".format(dict_pprint(request.form))
     info_str += "=== HEADERS ===\n{i[headers]}\n=== HEADERS END===\n\n"
+
     info_str = info_str.format(i=info)
+    print("\n" + "-" * 50 + "\n")
     print("\n\n{}\n".format(info_str))
+    print("-" * 50 + "\n")
     return info_str
 
 logo = r"""
